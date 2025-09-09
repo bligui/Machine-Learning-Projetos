@@ -8,7 +8,7 @@
 - Marcela de Martini
 
 <p align="center">
-  <img src="assets/meninassuper.gif" alt="Meninas Super Poderosas" width="500">
+  <img src="assets/m.gif" alt="Meninas Super Poderosas" width="500">
 </p>
 
 ---
