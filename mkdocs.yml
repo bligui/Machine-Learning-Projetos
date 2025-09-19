@@ -137,5 +137,5 @@ extra_javascript:
 nav:
   - Home: index.md
   - Projetos:
-    - Projeto 1: ./projeto/main.md
+    - Projeto 1: ./projeto1/main.md
     - Projeto 2: ./projeto2/main.md

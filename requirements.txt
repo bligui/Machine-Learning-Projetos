@@ -21,3 +21,6 @@ seaborn
 tabulate
 yfinance
 graphviz
+kagglehub
+tables
+seaborn
