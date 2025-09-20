@@ -85,13 +85,13 @@ Aplicar SMOTE no treino.
 === "Result"
 
     ```python exec="1" html="1"
-    --8<-- "docs/KNN/knn.py"
+    --8<-- "docs/projeto1/Treinamentoknn.py"
     ```
 
 === "Code"
 
     ```python exec="0"
-    --8<-- "docs/KNN/knn.py"
+    --8<-- "docs/projeto1/Treinamentoknn.py"
     ```
 
 
