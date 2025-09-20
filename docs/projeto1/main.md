@@ -45,10 +45,15 @@ Aplicar SMOTE no treino.
 
 # Pré - Processamento
 
-aplicaçaõ onde - hot encoding
+
 
 === "Code"
 
     ```python
     --8<-- "docs/projeto1/Preprocessamento.py"
     ``` 
+=== "Resultado"
+
+    ```python exec="on" html="0"
+    --8<-- "docs/projeto1/Preprocessamento.py"
+    ```
