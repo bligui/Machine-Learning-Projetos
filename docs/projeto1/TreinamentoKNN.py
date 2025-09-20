@@ -26,7 +26,7 @@ df["Label"] = df["Label"].map({
 label_encoder = LabelEncoder()  
 df['Gender'] = label_encoder.fit_transform(df['Gender'])
 
-X = df.drop(columns=['Label'])
+X = df[['Height', 'Weight']]
 y = df['Label']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
@@ -58,7 +58,7 @@ Z = Z.reshape(xx.shape)
 
 #gráfico final
 plt.contourf(xx, yy, Z, cmap=plt.cm.RdYlGn_r, alpha=0.3)
-sns.scatterplot(x=X.iloc[:, 0], y=X.iloc[:, 1], hue=y_labels, style=y_labels, palette={'Benigno': 'green', 'Maligno': 'red'}, s=100) #motivooooooo do errroo
+sns.scatterplot(x=X.iloc[:, 0], y=X.iloc[:, 1], hue=y_labels, style=y_labels, palette={'Normal Weight': 'green', 'Obese': 'red'}, s=100) #motivooooooo do errroo
 plt.xlabel("Height")
 plt.ylabel("Weight")
 plt.title("KNN Decision Boundary (k=3) -  Diagnóstico de Obesidade")
