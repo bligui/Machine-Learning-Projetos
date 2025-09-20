@@ -11,11 +11,16 @@ from sklearn.metrics import accuracy_score
 
 df = pd.read_csv('https://raw.githubusercontent.com/bligui/Machine-Learning-Projetos/refs/heads/main/base/Obesity%20Classification.csv')
 
-#EUA IA é a tabela que se refere ao id do individuo
-df = df.drop(columns=['EUA IA'])
+#Eé a tabela que se refere ao id do individuo
+df = df.drop(columns=['ID'])
 
-label_encoder = LabelEncoder()  
-df['Label'] = label_encoder.fit_transform(df['Label'])
+
+df["Label"] = df["Label"].map({
+    "Underweight": 0,
+    "Normal Weight": 1,
+    "Overweight": 2,
+    "Obese": 3
+})
 
 label_encoder = LabelEncoder()  
 df['Gender'] = label_encoder.fit_transform(df['Gender'])
@@ -26,3 +31,4 @@ y = df['Label']
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42, stratify=y)
 
 print(df.to_markdown(index=False))
+

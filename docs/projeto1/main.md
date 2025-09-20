@@ -41,4 +41,14 @@ Aplicar SMOTE no treino.
     ```python exec="on" html="0"
     --8<-- "docs/projeto1/Exploracaodedados.py"
     ```
-    
+
+
+# Pré - Processamento
+
+aplicaçaõ onde - hot encoding
+
+=== "Code"
+
+    ```python
+    --8<-- "docs/projeto1/Preprocessamento.py"
+    ``` 
