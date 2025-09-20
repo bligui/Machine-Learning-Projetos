@@ -57,3 +57,38 @@ Aplicar SMOTE no treino.
     ```python exec="on" html="0"
     --8<-- "docs/projeto1/Preprocessamento.py"
     ```
+
+# Divisão de dados
+
+
+=== "Code"
+
+    ```python
+    --8<-- "docs/projeto1/Divisaodedados.py"
+    ``` 
+
+# Treinamento do modelo
+
+=== "Code"
+
+    ```python
+    --8<-- "docs/projeto1/Treinamentodomodelo.py"
+    ``` 
+
+# Avaliaçaõ do modelo final
+
+=== "decision tree"
+
+    ```python exec="1" html="true"
+    --8<-- "docs/projeto1/Avaliacaodomodelo.py"
+    ```
+
+
+=== "code"
+
+    ```python exec="0"
+    --8<-- "docs/projeto1/Avaliacaodomodelo.py"
+    ```
+---
+
+# Relatório Final
