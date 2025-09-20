@@ -31,11 +31,6 @@ Usar estratificação na divisão treino/teste.
 
 Aplicar SMOTE no treino.
 
-=== "Code"
-
-    ```python
-    --8<-- "docs/projeto1/Exploracaodedados.py"
-    ``` 
 === "Resultado"
 
     ```python exec="on" html="0"
@@ -47,11 +42,6 @@ Aplicar SMOTE no treino.
 
 
 
-=== "Code"
-
-    ```python
-    --8<-- "docs/projeto1/Preprocessamento.py"
-    ``` 
 === "Resultado"
 
     ```python exec="on" html="0"
