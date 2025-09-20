@@ -17,10 +17,8 @@ df = df.drop(columns=['ID'])
 
 
 df["Label"] = df["Label"].map({
-    "Underweight": 0,
-    "Normal Weight": 1,
-    "Overweight": 2,
-    "Obese": 3
+    "Normal Weight": 0,
+    "Obese": 1
 })
 
 label_encoder = LabelEncoder()  
