@@ -65,6 +65,16 @@ Aplicar SMOTE no treino.
     --8<-- "docs/projeto1/TreinamentoAD.py"
     ``` 
 
+
+# algoritmo de knn
+
+
+=== "Result"
+
+    ```python exec="1" html="1"
+    --8<-- "docs/projeto1/TreinamentoKNN.py"
+    ```
+    
 # Avaliaçaõ do modelo final
 
 === "decision tree"
@@ -81,19 +91,6 @@ Aplicar SMOTE no treino.
     ```
 ---
 
-# algoritmo de knn
-
-=== "Result"
-
-    ```python exec="1" html="1"
-    --8<-- "docs/projeto1/TreinamentoKNN.py"
-    ```
-
-=== "Code"
-
-    ```python exec="0"
-    --8<-- "docs/projeto1/TreinamentoKNN.py"
-    ```
 
 
 # Relatório Final
