@@ -24,7 +24,7 @@ df['Gender'] = label_encoder.fit_transform(df['Gender'])
 X = df[['Height', 'Weight']]
 y = df['Label']
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 
 # Treinamento do KNN
 knn = KNeighborsClassifier(n_neighbors=3)
