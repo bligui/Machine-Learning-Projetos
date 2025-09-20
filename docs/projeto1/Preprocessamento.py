@@ -25,5 +25,4 @@ df["Label"] = df["Label"].map({
     "Obese": 3
 })
 
-
-print(df.to_markdown(index=False))
+print(df.sample(n=10, random_state=42).to_markdown(index=False))
