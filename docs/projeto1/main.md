@@ -81,6 +81,7 @@ Aplicar SMOTE no treino.
     ```
 ---
 
+#algoritmo de knn
 
 === "Result"
 
