@@ -62,7 +62,7 @@ Aplicar SMOTE no treino.
 === "Code"
 
     ```python
-    --8<-- "docs/projeto1/Treinamentodomodelo.py"
+    --8<-- "docs/projeto1/TreinamentoAD.py"
     ``` 
 
 # Avaliaçaõ do modelo final
@@ -80,5 +80,19 @@ Aplicar SMOTE no treino.
     --8<-- "docs/projeto1/Avaliacaodomodelo.py"
     ```
 ---
+
+
+=== "Result"
+
+    ```python exec="1" html="1"
+    --8<-- "docs/KNN/knn.py"
+    ```
+
+=== "Code"
+
+    ```python exec="0"
+    --8<-- "docs/KNN/knn.py"
+    ```
+
 
 # Relatório Final
