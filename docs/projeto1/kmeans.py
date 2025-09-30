@@ -6,27 +6,28 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 import pandas as pd
 
-
+# Carregar dataset
 df = pd.read_csv('https://raw.githubusercontent.com/bligui/Machine-Learning-Projetos/refs/heads/main/base/Obesity%20Classification.csv')
 
-# Features (remover id e diagnóstico)
-X = df.drop(columns=['Label', 'ID'])
+# Features (remover a target e transformar variáveis categóricas em dummies)
+X = pd.get_dummies(df.drop(columns=['NObeyesdad']), drop_first=True)
 
-
-
+# Escalar dados
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
+# Redução de dimensionalidade PCA
 pca = PCA(n_components=2)
 X_pca = pca.fit_transform(X_scaled)
 
-
+# KMeans clustering
 kmeans = KMeans(n_clusters=5, init='k-means++', max_iter=100, random_state=42)
 labels = kmeans.fit_predict(X_pca)
 
-# Adicionar clusters ao dataframe
+# Adicionar clusters ao DataFrame original
 df['Cluster'] = labels
 
+# Visualização dos clusters
 plt.figure(figsize=(10, 8))
 plt.scatter(X_pca[:, 0], X_pca[:, 1], c=labels, cmap='viridis', s=50)
 plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1],
@@ -37,7 +38,7 @@ plt.ylabel('Componente Principal 2')
 plt.legend()
 plt.show()
 
-
+# Tabela de variância explicada
 variancias = pca.explained_variance_ratio_
 tabela_variancia = pd.DataFrame({
     'Componente Principal': [f'PC{i+1}' for i in range(len(variancias))],
@@ -45,18 +46,11 @@ tabela_variancia = pd.DataFrame({
     'Variância Acumulada': np.cumsum(variancias)
 })
 
-# Exibir tabela em Markdown (perfeito para MkDocs)
 print(tabela_variancia.to_markdown(index=False))
 
-# Variância total
+# Variância total explicada
 print("\nVariância total explicada (2 componentes):", np.sum(variancias))
 
-
-print("\nCentróides finais:", kmeans.cluster_centers_)
+# Resultados do KMeans
+print("\nCentróides finais (no espaço PCA):", kmeans.cluster_centers_)
 print("Inércia (WCSS):", kmeans.inertia_)
-
-
-buffer = StringIO()
-plt.savefig(buffer, format="svg", transparent=True)
-print(buffer.getvalue())
-
