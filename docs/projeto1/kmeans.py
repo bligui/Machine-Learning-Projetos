@@ -54,3 +54,8 @@ print("\nVariância total explicada (2 componentes):", np.sum(variancias))
 # Resultados do KMeans
 print("\nCentróides finais (no espaço PCA):", kmeans.cluster_centers_)
 print("Inércia (WCSS):", kmeans.inertia_)
+
+
+buffer = StringIO()
+plt.savefig(buffer, format="svg", transparent=True)
+print(buffer.getvalue())
