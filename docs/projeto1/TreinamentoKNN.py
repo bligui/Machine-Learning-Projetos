@@ -74,6 +74,11 @@ buffer = StringIO()
 plt.savefig(buffer, format="svg", transparent=True)
 print(buffer.getvalue())
 
+
+
+
+
+
 # 1. Validação Cruzada
 from sklearn.model_selection import cross_val_score
 scores = cross_val_score(knn, X, y, cv=5)

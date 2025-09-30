@@ -92,5 +92,19 @@ Aplicar SMOTE no treino.
 ---
 
 
+kmeans
 
+=== "kmeans"
+
+    ```python exec="1" html="true"
+    --8<-- "docs/projeto1/kmeans.py"
+    ```
+
+
+=== "code"
+
+    ```python exec="0"
+    --8<-- "docs/projeto1/kmeans.py"
+    ```
+---
 # Relatório Final
