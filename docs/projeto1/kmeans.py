@@ -10,7 +10,7 @@ import pandas as pd
 df = pd.read_csv('https://raw.githubusercontent.com/bligui/Machine-Learning-Projetos/refs/heads/main/base/Obesity%20Classification.csv')
 
 # Features (remover id e diagnóstico)
-X = df.drop(columns=['diagnosis', 'id'])
+X = df.drop(columns=['label', 'id'])
 
 
 
@@ -21,7 +21,7 @@ pca = PCA(n_components=2)
 X_pca = pca.fit_transform(X_scaled)
 
 
-kmeans = KMeans(n_clusters=3, init='k-means++', max_iter=100, random_state=42)
+kmeans = KMeans(n_clusters=5, init='k-means++', max_iter=100, random_state=42)
 labels = kmeans.fit_predict(X_pca)
 
 # Adicionar clusters ao dataframe
