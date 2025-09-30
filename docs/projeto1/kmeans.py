@@ -36,7 +36,14 @@ plt.title('Clusters após redução de dimensionalidade (PCA)')
 plt.xlabel('Componente Principal 1')
 plt.ylabel('Componente Principal 2')
 plt.legend()
-plt.show()
+
+# Salvar gráfico no buffer (para exibir no Markdown)
+buffer = StringIO()
+plt.savefig(buffer, format="svg", transparent=True)
+print(buffer.getvalue())
+
+# Caso queira ver localmente também, descomente:
+# plt.show()
 
 # Tabela de variância explicada
 variancias = pca.explained_variance_ratio_
@@ -46,16 +53,11 @@ tabela_variancia = pd.DataFrame({
     'Variância Acumulada': np.cumsum(variancias)
 })
 
-print(tabela_variancia.to_markdown(index=False))
+# print(tabela_variancia.to_markdown(index=False))
 
 # Variância total explicada
-print("\nVariância total explicada (2 componentes):", np.sum(variancias))
+# print("\nVariância total explicada (2 componentes):", np.sum(variancias))
 
 # Resultados do KMeans
-print("\nCentróides finais (no espaço PCA):", kmeans.cluster_centers_)
-print("Inércia (WCSS):", kmeans.inertia_)
-
-
-buffer = StringIO()
-plt.savefig(buffer, format="svg", transparent=True)
-print(buffer.getvalue())
+# print("\nCentróides finais (no espaço PCA):", kmeans.cluster_centers_)
+# print("Inércia (WCSS):", kmeans.inertia_)
