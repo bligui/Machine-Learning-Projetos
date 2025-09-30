@@ -10,7 +10,7 @@ import pandas as pd
 df = pd.read_csv('https://raw.githubusercontent.com/bligui/Machine-Learning-Projetos/refs/heads/main/base/Obesity%20Classification.csv')
 
 # Features (remover a target e transformar variáveis categóricas em dummies)
-X = pd.get_dummies(df.drop(columns=['NObeyesdad']), drop_first=True)
+X = pd.get_dummies(df.drop(columns=['Label']), drop_first=True)
 
 # Escalar dados
 scaler = StandardScaler()
