@@ -10,7 +10,7 @@ import pandas as pd
 df = pd.read_csv('https://raw.githubusercontent.com/bligui/Machine-Learning-Projetos/refs/heads/main/base/Obesity%20Classification.csv')
 
 # Features (remover id e diagnóstico)
-X = df.drop(columns=['label', 'id'])
+X = df.drop(columns=['Label', 'ID'])
 
 
 
