@@ -4,6 +4,7 @@
 ## Sobre
 
 - Ana Carolina Frank
+- Luzivania Bonfim
 - Maria Luiza Oliveira
 - Marcela de Martini
 
