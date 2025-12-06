@@ -25,5 +25,5 @@
 
 > Abaixo, você pode acompanhar o progresso das atividades:
 
-- [ ] Projeto 1
-- [ ] Projeto 2 
+- [X] Projeto 1
+- [X] Projeto 2 

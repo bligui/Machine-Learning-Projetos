@@ -4,17 +4,15 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import r2_score, mean_squared_error
 import numpy as np
 
-# =====================
-# 1. CARREGAR OS DADOS
-# =====================
+
 
 df = pd.read_csv(
     'https://raw.githubusercontent.com/bligui/Machine-Learning-Projetos/refs/heads/main/docs/projeto2/RankingT.csv'
 )
 
-# =====================
+
 # 2. PRÉ-PROCESSAMENTO
-# =====================
+
 
 df['data'] = pd.to_datetime(df['data'])
 
@@ -24,16 +22,14 @@ df['dias_desde_inicio'] = (df['data'] - data_inicial).dt.days
 # Remover a coluna ID
 df = df.drop(columns=['id'])
 
-# =====================
-# 3. DEFINIR X e Y
-# =====================
+
+
 
 X = df[['posicao', 'dias_desde_inicio']]
 y = df['nota']
 
-# =====================
-# 4. TREINO E TESTE
-# =====================
+
+
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y,
@@ -41,9 +37,7 @@ X_train, X_test, y_train, y_test = train_test_split(
     random_state=42
 )
 
-# =====================
-# 5. MODELO RANDOM FOREST
-# =====================
+
 
 modelo = RandomForestRegressor(
     n_estimators=200,
@@ -52,9 +46,8 @@ modelo = RandomForestRegressor(
 
 modelo.fit(X_train, y_train)
 
-# =====================
-# 6. AVALIAÇÃO
-# =====================
+
+
 
 y_pred = modelo.predict(X_test)
 
@@ -65,9 +58,9 @@ print("\n===== RANDOM FOREST REGRESSÃO =====")
 print(f"R²: {r2:.4f}")
 print(f"RMSE: {rmse:.4f}")
 
-# =====================
+
 # 7. EXEMPLO DE PREVISÃO
-# =====================
+
 
 # Exemplo: posição 5 e 30 dias desde o início
 nova_amostra = np.array([[5, 30]])

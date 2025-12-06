@@ -9,14 +9,14 @@ Este projeto apresenta uma análise de regressão aplicada à previsão de notas
 ## Sumário
 
 * [Visão Geral](#visão-geral)
-* [1. Exploração dos Dados (EDA)](#1-exploração-dos-dados-eda)
-* [2. Geração de Dados Sintéticos (se necessário)](#2-geração-de-dados-sintéticos-se-necessário)
+* [1. Exploração dos Dados ](#1-exploração-dos-dados)
+* [2. Regressões](#regressões)
 * [3. Engenharia de Features](#3-engenharia-de-features)
 * [4. Modelos (seleção e código)](#4-modelos-seleção-e-código)
 * [5. Avaliação dos Modelos](#5-avaliação-dos-modelos)
 * [6. Comparação e Gráficos](#6-comparação-e-gráficos)
 * [7. Interpretação e Relatório Final](#7-interpretação-e-relatório-final)
-* [8. Instruções para MkDocs](#8-instruções-para-mkdocs)
+
 
 ---
 
@@ -294,40 +294,3 @@ No MkDocs, adicione essas imagens com `![alt](assets/img/arquivo.png)`.
 > "O modelo Random Forest foi o que apresentou melhor desempenho, com R² = X. Isso indica que aproximadamente X% da variabilidade da nota é explicada pelas variáveis posição e tempo. O RMSE de Y expressa que, em média, nossa previsão difere da nota real em Y pontos. A regressão linear, por sua vez, serviu como baseline e permitiu interpretar a direção dos efeitos: por exemplo, cada aumento de uma unidade em `posicao` está associado a uma variação média de *b* pontos na nota, mantendo dias constantes."
 
 ---
-
-## 8. Instruções para MkDocs
-
-1. Coloque este arquivo em `docs/projeto-regressao.md`.
-2. Crie a pasta `docs/assets/img/` e `docs/assets/`.
-3. Coloque os scripts em `scripts/` (fora da pasta docs) e rode:
-
-```bash
-python scripts/eda.py
-python scripts/generate_synthetic.py  # opcional
-python scripts/compare_models.py
-```
-
-4. Atualize `mkdocs.yml` adicionando no `nav`:
-
-```yaml
-nav:
-  - Home: index.md
-  - Projeto Regressão: projeto-regressao.md
-```
-
-5. Rode `mkdocs serve` e verifique a página.
-
----
-
-## Arquivos inclusos sugeridos
-
-* `docs/projeto-regressao.md` (este arquivo)
-* `scripts/eda.py`
-* `scripts/generate_synthetic.py` (opcional)
-* `scripts/compare_models.py`
-* `docs/assets/img/` (imagens geradas)
-* `docs/assets/model_comparison.csv`
-
----
-
-Se quiser, eu adapto agora os scripts para gerar imagens com um estilo consistente e criar automaticamente as pastas `docs/assets/img/` antes de salvar (pronto para rodar no seu repositório).
