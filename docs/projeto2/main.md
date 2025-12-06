@@ -1,23 +1,10 @@
+
 # Projeto II  
 
-# Exploração de Dados
-
-# Regressão
-
-# Implementação dos Modelos
-
-# Avaliação dos Modelos
-
-# Relatório Final
-
-
-# Projeto de Regressão — Página MkDocs
-
-Este documento contém tudo que você pediu: exploração de dados, geração sintética (se necessário), experimentos de regressão com pelo menos três algoritmos (Linear, Random Forest e KNN), avaliação, gráficos e texto interpretativo pronto para a página MkDocs.
-
-> **Como usar**: salve este arquivo em `docs/projeto-regressao.md` no seu projeto MkDocs. Os scripts Python indicados no documento geram os gráficos em `docs/assets/img/` para que sejam exibidos na página.
+Este projeto apresenta uma análise de regressão aplicada à previsão de notas de filmes, utilizando diferentes algoritmos de Machine Learning. Ao longo do relatório são abordadas a exploração e preparação dos dados, a implementação dos modelos, a avaliação de desempenho e a comparação entre os resultados obtidos.
 
 ---
+
 
 ## Sumário
 
@@ -32,6 +19,35 @@ Este documento contém tudo que você pediu: exploração de dados, geração si
 * [8. Instruções para MkDocs](#8-instruções-para-mkdocs)
 
 ---
+
+# Exploração de Dados
+
+=== "Code"
+
+    ```python
+    --8<-- "docs/projeto2/exploracao.py"
+    ``` 
+=== "Resultado"
+
+    ```python exec="on" html="0"
+    --8<-- "docs/projeto2/exploracao.py"
+
+    ```
+
+# Regressão
+
+# Implementação dos Modelos
+
+# Avaliação dos Modelos
+
+# Relatório Final
+
+
+
+
+Este documento contém tudo que você pediu: exploração de dados, geração sintética (se necessário), experimentos de regressão com pelo menos três algoritmos (Linear, Random Forest e KNN), avaliação, gráficos e texto interpretativo pronto para a página MkDocs.
+
+
 
 ## Visão Geral
 
@@ -92,7 +108,6 @@ plt.savefig('docs/assets/img/nota_tempo.png')
 Se o dataset for pequeno (ex.: < 100 linhas) ou sem variabilidade suficiente, gere dados sintéticos para enriquecer a análise.
 
 ```python
-# scripts/generate_synthetic.py
 import pandas as pd
 import numpy as np
 
