@@ -126,6 +126,7 @@ plugins:
       prompt_literal_start:
         - "$"
         - ">"
+  - mkdocs-jupyter
 
 extra_javascript:
   - https://unpkg.com/mathjax/es5/tex-mml-chtml.js

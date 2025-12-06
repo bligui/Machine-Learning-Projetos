@@ -19,8 +19,27 @@ Este projeto apresenta uma análise de regressão aplicada à previsão de notas
 
 
 ---
+## Visão Geral
 
-# Exploração de Dados
+Objetivo: prever a variável contínua `nota` a partir de `posicao` e `data`.
+
+Fluxo do projeto:
+
+1. Carregar e explorar dados
+2. Se poucos registros, gerar dados sintéticos realistas
+3. Criar features (dias desde início)
+4. Treinar pelo menos 3 modelos de regressão
+5. Avaliar com métricas apropriadas (R², RMSE, MAE)
+6. Comparar e interpretar.
+
+---
+
+## Exploração de Dados
+
+O dataset usado a partir da raspagem do site do IMDB é estruturado como um registro de séries temporais que monitora o desempenho de 20 filmes por meio de suas notas e posições em um ranking diário de um mês.
+O objetivo desta análise exploratória é compreender a estrutura dos dados, avaliar sua qualidade e identificar as relações fundamentais entre as variáveis, servindo como base sólida para o desenvolvimento de modelos de Machine Learning.
+
+!!! tip "O dataset é composto por 5 colunas(id, id_filme, nota, posicao e data) e 600 observações."
 
 === "Resultado"
 
@@ -33,9 +52,11 @@ Este projeto apresenta uma análise de regressão aplicada à previsão de notas
     ```python
     --8<-- "docs/projeto2/exploracao.py"
     ``` 
+### Estatísticas descritivas:
 
 
-# Regressão
+## Regressões
+
 
 # Implementação dos Modelos
 
@@ -46,55 +67,16 @@ Este projeto apresenta uma análise de regressão aplicada à previsão de notas
 
 
 
-Este documento contém tudo que você pediu: exploração de dados, geração sintética (se necessário), experimentos de regressão com pelo menos três algoritmos (Linear, Random Forest e KNN), avaliação, gráficos e texto interpretativo pronto para a página MkDocs.
 
 
 
-## Visão Geral
 
-Objetivo: prever a variável contínua `nota` a partir de `posicao` e `data` (transformada em `dias_desde_inicio`).
+## 1. Exploração dos Dados 
 
-Fluxo do projeto:
-
-1. Carregar e explorar dados
-2. Se poucos registros, gerar dados sintéticos realistas
-3. Criar features (dias desde início)
-4. Treinar pelo menos 3 modelos de regressão
-5. Avaliar com métricas apropriadas (R², RMSE, MAE)
-6. Comparar, plotar e interpretar
-
----
-
-## 1. Exploração dos Dados (EDA)
-
-### Estatísticas descritivas
 
 Exiba as estatísticas básicas e verifique valores faltantes, tipos de dados e distribuição da variável alvo.
 
-```python
-# scripts/eda.py
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
 
-url = 'https://raw.githubusercontent.com/bligui/Machine-Learning-Projetos/refs/heads/main/docs/projeto2/RankingT.csv'
-
-df = pd.read_csv(url)
-print(df.info())
-print(df.describe())
-print('Missing values:\n', df.isna().sum())
-
-# Converter data e plotar série temporal da nota
-df['data'] = pd.to_datetime(df['data'])
-df['dias_desde_inicio'] = (df['data'] - df['data'].min()).dt.days
-
-plt.figure(figsize=(10,4))
-plt.scatter(df['dias_desde_inicio'], df['nota'])
-plt.xlabel('Dias desde início')
-plt.ylabel('Nota')
-plt.title('Nota ao longo do tempo')
-plt.savefig('docs/assets/img/nota_tempo.png')
-```
 
 **O que observar**:
 
@@ -108,40 +90,7 @@ plt.savefig('docs/assets/img/nota_tempo.png')
 
 Se o dataset for pequeno (ex.: < 100 linhas) ou sem variabilidade suficiente, gere dados sintéticos para enriquecer a análise.
 
-```python
-import pandas as pd
-import numpy as np
 
-# carregar original
-url = 'https://raw.githubusercontent.com/bligui/Machine-Learning-Projetos/refs/heads/main/docs/projeto2/RankingT.csv'
-orig = pd.read_csv(url)
-orig['data'] = pd.to_datetime(orig['data'])
-
-# parâmetros para simulação
-n_to_create = max(0, 300 - len(orig))  # criar até 300 amostras totais
-
-if n_to_create > 0:
-    rng = np.random.RandomState(42)
-    dias_min = (orig['data'].min())
-    dias_max = (orig['data'].max())
-
-    novos = []
-    for _ in range(n_to_create):
-        pos = int(rng.uniform(orig['posicao'].min(), orig['posicao'].max()))
-        dias = int(rng.uniform(0, (orig['data'].max()-orig['data'].min()).days + 30))
-        # gerar nota baseada numa função ruidosa (exemplo)
-        nota = max(0, min(10, 9.5 - 0.05*pos + 0.01*dias + rng.normal(0,0.5)))
-        data = orig['data'].min() + pd.Timedelta(days=dias)
-        novos.append({'posicao': pos, 'data': data, 'nota': nota})
-
-    novos_df = pd.DataFrame(novos)
-    # juntar e salvar
-    final = pd.concat([orig[['posicao','data','nota']], novos_df], ignore_index=True)
-    final.to_csv('data/ranking_extended.csv', index=False)
-    print('Synthetic data created. Total rows:', len(final))
-else:
-    print('No synthetic data needed')
-```
 
 > A função de geração acima é um exemplo — ajuste a estrutura para manter realismo.
 
