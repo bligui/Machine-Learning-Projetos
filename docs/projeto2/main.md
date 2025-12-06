@@ -22,17 +22,18 @@ Este projeto apresenta uma análise de regressão aplicada à previsão de notas
 
 # Exploração de Dados
 
-=== "Code"
-
-    ```python
-    --8<-- "docs/projeto2/exploracao.py"
-    ``` 
 === "Resultado"
 
     ```python exec="on" html="0"
     --8<-- "docs/projeto2/exploracao.py"
 
     ```
+=== "Code"
+
+    ```python
+    --8<-- "docs/projeto2/exploracao.py"
+    ``` 
+
 
 # Regressão
 
