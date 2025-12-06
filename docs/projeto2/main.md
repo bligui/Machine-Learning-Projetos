@@ -52,10 +52,18 @@ O objetivo desta análise exploratória é compreender a estrutura dos dados, av
     ```python
     --8<-- "docs/projeto2/exploracao.py"
     ``` 
-### Estatísticas descritivas:
 
 
-## Regressões
+A média das notas foi de 5,58, indicando que os filmes, em geral, possuem uma avaliação intermediária. A mediana apresentou valor próximo à média, o que sugere uma distribuição relativamente simétrica. 
+
+
+- O histograma mostra que a maior concentração de dados está entre 4 e 6, indicando que a maioria dos filmes recebe notas nessa faixa.
+
+![histograma de notas](projeto2/notahist.png)
+
+## Regressões:
+
+
 
 
 # Implementação dos Modelos
@@ -70,31 +78,6 @@ O objetivo desta análise exploratória é compreender a estrutura dos dados, av
 
 
 
-
-## 1. Exploração dos Dados 
-
-
-Exiba as estatísticas básicas e verifique valores faltantes, tipos de dados e distribuição da variável alvo.
-
-
-
-**O que observar**:
-
-* Se `nota` tem variância razoável. Se for quase constante, prever vai ser difícil.
-* Se há outliers (valores de nota impossíveis).
-* Se `posicao` e `nota` têm relação aparente (plot scatter).
-
----
-
-## 2. Geração de Dados Sintéticos (se necessário)
-
-Se o dataset for pequeno (ex.: < 100 linhas) ou sem variabilidade suficiente, gere dados sintéticos para enriquecer a análise.
-
-
-
-> A função de geração acima é um exemplo — ajuste a estrutura para manter realismo.
-
----
 
 ## 3. Engenharia de Features
 
