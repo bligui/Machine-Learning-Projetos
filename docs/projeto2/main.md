@@ -123,7 +123,7 @@ Os modelos escolhidos foram:
 
 
 
-!!!  example " Tabela de Comparação de Resultados"
+!!!  example "Tabela de Comparação de Resultados"
 
 
 | Modelo                   | R²         | RMSE      | MAE       |
@@ -181,11 +181,8 @@ Dessa forma, o Random Forest foi escolhido como o modelo mais adequado para a pr
 
 ## Possíveis Melhorias Futuras
 
-Como melhoria futura, sugere-se a inclusão de novas variáveis, como gênero do filme, número de votos, orçamento e popularidade, para enriquecer o conjunto de dados.
-
-Também é recomendada a otimização dos hiperparâmetros dos modelos, especialmente do Random Forest e do KNN, utilizando técnicas como Grid Search.
-
-Além disso, a ampliação do período de coleta de dados pode tornar o modelo mais robusto e reduzir possíveis vieses temporais. Por fim, podem ser testados algoritmos mais avançados, como Gradient Boosting e Redes Neurais.
+Como melhoria futura, pode ser realizada a inclusão de novas variáveis, como gênero do filme, número de votos, orçamento e popularidade, para enriquecer o conjunto de dados.Também é recomendada a otimização dos hiperparâmetros dos modelos, especialmente do Random Forest e do KNN.
+Além disso, a ampliação do período de coleta de dados pode tornar o modelo mais robusto e reduzir possíveis vieses temporais. Por fim, podem ser testados algoritmos mais avançados, como Gradient Boosting e Redes Neurais no futuro.
 
 
 
