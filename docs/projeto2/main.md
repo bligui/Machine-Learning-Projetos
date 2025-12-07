@@ -10,7 +10,7 @@ Este projeto apresenta uma análise de regressão aplicada à previsão de notas
 
 * [Visão Geral](#visão-geral)
 * [1. Exploração dos Dados ](#1-exploração-dos-dados)
-* [2. Regressões](#regressões)
+* [2. Regressão Linear](#regressões)
 * [3. Engenharia de Features](#3-engenharia-de-features)
 * [4. Modelos (seleção e código)](#4-modelos-seleção-e-código)
 * [5. Avaliação dos Modelos](#5-avaliação-dos-modelos)
@@ -139,9 +139,49 @@ Os modelos escolhidos foram:
 | Random Forest            | **0.8997** | **0.756** | **0.586** |
 
 
+### Regressão Linear Simples:
+
+A regressão linear simples apresentou um R² de 0.883, o que indica que aproximadamente 88,3% da variação da nota é explicada pela variável posição. Apesar de apresentar um bom desempenho, esse modelo assume uma relação linear entre as variáveis, o que pode limitar sua capacidade de capturar padrões mais complexos ou não lineares presentes nos dados.
+
+Seu RMSE de 0.82 e MAE de 0.67 mostram que, em média, o erro de previsão está em torno de 0.6 a 0.8 pontos na nota.
+
+É um bom modelo base, mas possui limitação em problemas com maior complexidade.
+
+
+### Árvore de Decisão:
+
+A Árvore de Decisão apresentou um R² de 0.8989, superior ao da regressão linear simples, indicando que o modelo consegue explicar cerca de 89,9% da variação da nota.
+
+Este modelo é capaz de capturar padrões não lineares, pois ele divide o conjunto de dados em regiões, criando regras de decisão com base nos valores de posição.
+
+O RMSE (0.7592) e o MAE (0.5878) são menores que os do modelo linear, indicando maior precisão na previsão.
+
+Isso mostra que a relação entre posição e nota não é puramente linear, e que a árvore consegue se adaptar melhor aos dados.
+
+### K-Nearest Neighbors (KNN):
+
+O modelo KNN apresentou um R² de 0.8816, valor muito próximo ao da regressão linear. Isso indica que ele explica cerca de 88,1% da variação da nota, porém com desempenho ligeiramente inferior à Árvore e ao Random Forest.
+
+Seu RMSE (0.8213) e MAE (0.6250) foram maiores do que os da Árvore e do Random Forest, mostrando que ele comete erros um pouco maiores na previsão.
+
+Isso pode estar relacionado ao fato de o KNN ser altamente sensível aos dados próximos e à forma como a distância entre eles é calculada.
+
+Apesar disso, ele ainda apresenta um bom desempenho geral.
+
+
+
 
 ## Relatório Final
 
+Após a implementação e avaliação dos quatro modelos de regressão, foi possível observar que o Random Forest apresentou o melhor desempenho geral, obtendo o maior valor de R² (0.8997) e os menores valores de RMSE (0.7562) e MAE (0.5857).
+
+Isso indica que o modelo é capaz de explicar quase 90% da variação das notas, além de apresentar o menor erro médio nas previsões.
+
+A Árvore de Decisão também apresentou um bom desempenho, superando a regressão linear simples, o que reforça a existência de relações não lineares entre a posição no ranking e a nota dos filmes.
+
+O KNN, embora eficiente, mostrou resultados ligeiramente inferiores aos dois modelos baseados em árvores.
+
+Dessa forma, o Random Forest foi escolhido como o modelo mais adequado para a previsão da nota dos filmes neste projeto.
 
 
 
@@ -149,151 +189,10 @@ Os modelos escolhidos foram:
 
 
 
-## 3. Engenharia de Features
 
-Transforme `data` em `dias_desde_inicio`, remova `id` e outros campos irrelevantes.
 
-```python
-# snippet
-df['data'] = pd.to_datetime(df['data'])
-df['dias_desde_inicio'] = (df['data'] - df['data'].min()).dt.days
-df = df.drop(columns=['id'])
-X = df[['posicao','dias_desde_inicio']]
-y = df['nota']
-```
 
-Escalonamento (necessário para KNN e SVR):
 
-```python
-from sklearn.preprocessing import StandardScaler
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
-```
 
----
 
-## 4. Modelos (seleção e código)
 
-Vamos implementar 4 modelos para comparação (você pediu 3, mas 4 dá melhor visão):
-
-* Regressão Linear Múltipla (baseline)
-* Árvore de Decisão (regressor)
-* KNN Regressor
-* Random Forest Regressor
-
-**Arquivo central de experimentos**: `scripts/compare_models.py`
-
-```python
-# scripts/compare_models.py
-import pandas as pd
-import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.tree import DecisionTreeRegressor
-from sklearn.neighbors import KNeighborsRegressor
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
-from sklearn.preprocessing import StandardScaler
-import matplotlib.pyplot as plt
-
-# carregar (trocável para data/ranking_extended.csv se você gerou sintético)
-url = 'https://raw.githubusercontent.com/bligui/Machine-Learning-Projetos/refs/heads/main/docs/projeto2/RankingT.csv'
-
-df = pd.read_csv(url)
-df['data'] = pd.to_datetime(df['data'])
-df['dias_desde_inicio'] = (df['data'] - df['data'].min()).dt.days
-df = df.drop(columns=['id'])
-X = df[['posicao','dias_desde_inicio']]
-y = df['nota']
-
-# Escalonar para KNN
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
-
-X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.3, random_state=42)
-
-models = {
-    'LinearRegression': LinearRegression(),
-    'DecisionTree': DecisionTreeRegressor(random_state=42, max_depth=6),
-    'KNN': KNeighborsRegressor(n_neighbors=5),
-    'RandomForest': RandomForestRegressor(n_estimators=200, random_state=42)
-}
-
-results = []
-
-for name, model in models.items():
-    model.fit(X_train, y_train)
-    y_pred = model.predict(X_test)
-    r2 = r2_score(y_test, y_pred)
-    rmse = np.sqrt(mean_squared_error(y_test, y_pred))
-    mae = mean_absolute_error(y_test, y_pred)
-    results.append({'model': name, 'r2': r2, 'rmse': rmse, 'mae': mae})
-    print(f"{name} -> R2: {r2:.4f}, RMSE: {rmse:.4f}, MAE: {mae:.4f}")
-
-res_df = pd.DataFrame(results).sort_values('r2', ascending=False)
-res_df.to_csv('docs/assets/model_comparison.csv', index=False)
-
-# plot de comparação
-plt.figure(figsize=(8,5))
-plt.bar(res_df['model'], res_df['r2'])
-plt.ylabel('R²')
-plt.title('Comparação de modelos (R²)')
-plt.savefig('docs/assets/img/model_r2_comparison.png', bbox_inches='tight')
-
-# scatter plot: real x previsto para o melhor modelo
-best = res_df.iloc[0]['model']
-best_model = models[best]
-y_best = best_model.predict(X_test)
-plt.figure(figsize=(6,6))
-plt.scatter(y_test, y_best)
-plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'k--')
-plt.xlabel('Nota Real')
-plt.ylabel('Nota Prevista')
-plt.title(f'Real vs Previsto - {best}')
-plt.savefig('docs/assets/img/real_vs_predicted.png', bbox_inches='tight')
-```
-
----
-
-## 5. Avaliação dos Modelos
-
-### Métricas sugeridas (regressão):
-
-* **R² (determination coefficient)** — interpretação: proporção da variância explicada.
-* **RMSE (Root Mean Squared Error)** — erro padrão das previsões, mesma unidade da variável alvo.
-* **MAE (Mean Absolute Error)** — erro médio absoluto, menos sensível a outliers.
-
-Incluí no script as três métricas e exportei uma tabela `docs/assets/model_comparison.csv`.
-
----
-
-## 6. Comparação e Gráficos
-
-Os gráficos gerados estão em `docs/assets/img/`:
-
-* `nota_tempo.png` — scatter nota x dias
-* `model_r2_comparison.png` — barra com R² por modelo
-* `real_vs_predicted.png` — scatter real vs previsto para o melhor modelo
-
-No MkDocs, adicione essas imagens com `![alt](assets/img/arquivo.png)`.
-
----
-
-## 7. Interpretação e Relatório Final
-
-### Estrutura sugerida do texto (cada item pode virar um parágrafo):
-
-1. **Resumo do problema**: prever a nota a partir de posição e tempo.
-2. **EDA**: descrever variáveis, número de observações, distribuição da nota, presença de outliers e correlações.
-3. **Decisão sobre dados sintéticos**: se gerou, justificar a função usada para simulação e checar se a distribuição final é plausível.
-4. **Modelos treinados**: listar modelos, hiperparâmetros principais (ex.: `n_estimators=200`, `max_depth=6`).
-5. **Resultado quantitativo**: tabela com R², RMSE e MAE; destacar o melhor modelo.
-6. **Gráficos**: incluir `real_vs_predicted` e `model_r2_comparison`.
-7. **Interpretação**: explicar o que significam os coeficientes (no caso da regressão linear), e interpretar o desempenho (por exemplo, se R²=0.7, dizer que 70% da variância da nota é explicada pelas variáveis usadas).
-8. **Limitações e melhorias**: possíveis fontes de melhoras — mais features (reviews, gênero), validação temporal, tuning de hiperparâmetros, seleção de features e ensembles mais sofisticados.
-
-> **Trecho interpretativo pronto (copiar/colar)**:
->
-> "O modelo Random Forest foi o que apresentou melhor desempenho, com R² = X. Isso indica que aproximadamente X% da variabilidade da nota é explicada pelas variáveis posição e tempo. O RMSE de Y expressa que, em média, nossa previsão difere da nota real em Y pontos. A regressão linear, por sua vez, serviu como baseline e permitiu interpretar a direção dos efeitos: por exemplo, cada aumento de uma unidade em `posicao` está associado a uma variação média de *b* pontos na nota, mantendo dias constantes."
-
----
