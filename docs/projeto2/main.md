@@ -10,12 +10,10 @@ Este projeto apresenta uma análise de regressão aplicada à previsão de notas
 
 * [Visão Geral](#visão-geral)
 * [1. Exploração dos Dados ](#1-exploração-dos-dados)
-* [2. Regressão Linear](#regressões)
-* [3. Engenharia de Features](#3-engenharia-de-features)
-* [4. Modelos (seleção e código)](#4-modelos-seleção-e-código)
-* [5. Avaliação dos Modelos](#5-avaliação-dos-modelos)
-* [6. Comparação e Gráficos](#6-comparação-e-gráficos)
-* [7. Interpretação e Relatório Final](#7-interpretação-e-relatório-final)
+* [2. Regressão Linear](#2-regressões)
+* [3. Implementação dos Modelos](#3-Implementação-dos-Modelos)
+* [4. Avaliação dos Modelos](#4-Avaliação-dos-Modelos)
+* [5. Relatório Final](#5-Relatório-Final)
 
 
 ---
@@ -62,6 +60,10 @@ A média das notas foi de 5,58, indicando que os filmes, em geral, possuem uma a
 [histograma]: projeto2/notahist.png "Histograma de Notas"
 ![histograma de notas](projeto2/notahist.png)
 
+<p align="center">
+  <img src="assets/notashist.png" alt="Histograma" width="500">
+</p>
+
 ## Regressão Linear:
 
 === "Code"
@@ -91,7 +93,9 @@ O modelo consegue explicar cerca de 88% da variação da nota dos filmes, usando
 
 [dispersão]: projeto2/linear.png "Posição vs Nota"
 ![Grafico de dispersão](projeto2/linear.png)
-
+<p align="center">
+  <img src="assets/liner.png" alt="Grafico de dispersão" width="500">
+</p>
 
 
 
