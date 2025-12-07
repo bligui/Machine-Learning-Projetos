@@ -122,8 +122,7 @@ Os modelos escolhidos foram:
 ## Avaliação dos Modelos
 
 
-
-!!! example "Tabela de Comparação de Resultados "
+!!! tip "Tabela de Comparação de Resultados "
 
 
 | Modelo                   | R²         | RMSE      | MAE       |
