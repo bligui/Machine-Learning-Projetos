@@ -123,7 +123,7 @@ Os modelos escolhidos foram:
 
 
 
-!!!  example "Tabela de Comparação de Resultados"
+!!! example "Tabela de Comparação de Resultados "
 
 
 | Modelo                   | R²         | RMSE      | MAE       |
