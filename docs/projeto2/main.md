@@ -64,6 +64,11 @@ A média das notas foi de 5,58, indicando que os filmes, em geral, possuem uma a
 
 ## Regressão Linear:
 
+=== "Code"
+
+    ```python
+    --8<-- "docs/projeto2/linear.py"
+    ``` 
 
 >> RESULTADOS REGRESSÃO LINEAR - TREINO:
 R²: 0.889
@@ -75,21 +80,53 @@ R²: 0.883
 RMSE: 0.82
 MAE: 0.67
 
+
+- O R² está muito alto (perto de 1)
+- Erro (RMSE e MAE) é baixo
+- Treino e teste estão praticamente iguais pode inidicar a não existência de overfitting
+
+O modelo consegue explicar cerca de 88% da variação da nota dos filmes, usando as variáveis escolhidas.
+
+[dispersão]: projeto2/linear.png "Posição vs Nota"
+![Grafico de dispersão](projeto2/linear.png)
+
+
+
+
+## Implementação dos Modelos
+
+
+---
+
+Os modelos escolhidos foram:
+1. Decision tree
+2. KNN
+3. Random Forest
+
+---
+
 === "Code"
 
     ```python
-    --8<-- "docs/projeto2/linear.py"
+    --8<-- "docs/projeto2/random_forest_regressao.py"
+    ``` 
+=== "Code"
+
+    ```python
+    --8<-- "docs/projeto2/knn_regressao.py"
+    ``` 
+
+=== "Code"
+
+    ```python
+    --8<-- "docs/projeto2/dt.py"
     ``` 
 
 
 
+## Avaliação dos Modelos
 
-
-# Implementação dos Modelos
-
-# Avaliação dos Modelos
-
-# Relatório Final
+## Relatório Final
 
 
 
