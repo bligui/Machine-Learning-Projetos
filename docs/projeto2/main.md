@@ -92,6 +92,7 @@ O valor de R² indica que o modelo explica cerca de 88% da variação da nota do
 ---
 
 Os modelos escolhidos foram:
+
 1. Decision tree
 2. KNN
 3. Random Forest
