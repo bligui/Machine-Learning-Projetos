@@ -70,12 +70,14 @@ A média das notas foi de 5,58, indicando que os filmes, em geral, possuem uma a
     --8<-- "docs/projeto2/linear.py"
     ``` 
 
->> RESULTADOS REGRESSÃO LINEAR - TREINO:
+> RESULTADOS REGRESSÃO LINEAR - TREINO:
+
 R²: 0.889
 RMSE: 0.82
 MAE: 0.67
 
->> RESULTADOS REGRESSÃO LINEAR - TESTE:
+> RESULTADOS REGRESSÃO LINEAR - TESTE:
+
 R²: 0.883
 RMSE: 0.82
 MAE: 0.67
@@ -94,7 +96,6 @@ O modelo consegue explicar cerca de 88% da variação da nota dos filmes, usando
 
 
 ## Implementação dos Modelos
-
 
 ---
 
@@ -124,7 +125,20 @@ Os modelos escolhidos foram:
 
 
 
+
 ## Avaliação dos Modelos
+
+!!!  example" Tabela de Comparação de Resultados"
+
+
+| Modelo                   | R²         | RMSE      | MAE       |
+| ------------------------ | ---------- | --------- | --------- |
+| Regressão Linear Simples | 0.8830     | 0.820     | 0.670     |
+| Árvore de Decisão        | 0.8989     | 0.759     | 0.588     |
+| KNN                      | 0.8816     | 0.821     | 0.625     |
+| Random Forest            | **0.8997** | **0.756** | **0.586** |
+
+
 
 ## Relatório Final
 
