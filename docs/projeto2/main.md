@@ -59,9 +59,28 @@ A média das notas foi de 5,58, indicando que os filmes, em geral, possuem uma a
 
 - O histograma mostra que a maior concentração de dados está entre 4 e 6, indicando que a maioria dos filmes recebe notas nessa faixa.
 
+[histograma]: projeto2/notahist.png "Histograma de Notas"
 ![histograma de notas](projeto2/notahist.png)
 
-## Regressões:
+## Regressão Linear:
+
+
+>> RESULTADOS REGRESSÃO LINEAR - TREINO:
+R²: 0.889
+RMSE: 0.82
+MAE: 0.67
+
+>> RESULTADOS REGRESSÃO LINEAR - TESTE:
+R²: 0.883
+RMSE: 0.82
+MAE: 0.67
+
+=== "Code"
+
+    ```python
+    --8<-- "docs/projeto2/linear.py"
+    ``` 
+
 
 
 
