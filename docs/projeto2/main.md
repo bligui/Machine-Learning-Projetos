@@ -14,6 +14,7 @@ Este projeto apresenta uma análise de regressão aplicada à previsão de notas
 * [3. Implementação dos Modelos](#3-Implementação-dos-Modelos)
 * [4. Avaliação dos Modelos](#4-Avaliação-dos-Modelos)
 * [5. Relatório Final](#5-Relatório-Final)
+* [6. Possíveis melhorias](#6-Possíveis-melhorias)
 
 
 ---
@@ -28,18 +29,18 @@ Fluxo do projeto:
 3. Criar features (dias desde início)
 4. Treinar pelo menos 3 modelos de regressão
 5. Avaliar com métricas apropriadas (R², RMSE, MAE)
-6. Comparar e interpretar.
+6. Comparar e interpretar resultados
 
 ---
 
 ## Exploração de Dados
 
-O dataset usado a partir da raspagem do site do IMDB é estruturado como um registro de séries temporais que monitora o desempenho de 20 filmes por meio de suas notas e posições em um ranking diário de um mês.
+O conjunto de dados foi obtido por meio de raspagem do site do IMDB e possui uma estrutura semelhante a uma série temporal, monitorando o desempenho de 20 filmes ao longo de um mês, com registros diários de nota e posição no ranking.
 O objetivo desta análise exploratória é compreender a estrutura dos dados, avaliar sua qualidade e identificar as relações fundamentais entre as variáveis, servindo como base sólida para o desenvolvimento de modelos de Machine Learning.
 
 !!! tip "O dataset é composto por 5 colunas(id, id_filme, nota, posicao e data) e 600 observações."
 
-=== "Resultado"
+=== "Tabela"
 
     ```python exec="on" html="0"
     --8<-- "docs/projeto2/exploracao.py"
@@ -55,16 +56,13 @@ O objetivo desta análise exploratória é compreender a estrutura dos dados, av
 A média das notas foi de 5,58, indicando que os filmes, em geral, possuem uma avaliação intermediária. A mediana apresentou valor próximo à média, o que sugere uma distribuição relativamente simétrica. 
 
 
+![histograma de notas](nota.png)
+
 - O histograma mostra que a maior concentração de dados está entre 4 e 6, indicando que a maioria dos filmes recebe notas nessa faixa.
-
-
-![histograma de notas](notahist.png)
-
-
 
 ## Regressão Linear:
 
-=== "Code"
+=== "Codígo Regressão "
 
     ```python
     --8<-- "docs/projeto2/linear.py"
@@ -72,28 +70,21 @@ A média das notas foi de 5,58, indicando que os filmes, em geral, possuem uma a
 
 > RESULTADOS REGRESSÃO LINEAR - TREINO:
 
-R²: 0.889
-RMSE: 0.82
+R²: 0.889, 
+RMSE: 0.82, 
 MAE: 0.67
 
 > RESULTADOS REGRESSÃO LINEAR - TESTE:
 
-R²: 0.883
-RMSE: 0.82
+R²: 0.883,
+RMSE: 0.82, 
 MAE: 0.67
 
 
-- O R² está muito alto (perto de 1)
-- Erro (RMSE e MAE) é baixo
-- Treino e teste estão praticamente iguais pode inidicar a não existência de overfitting
-
-O modelo consegue explicar cerca de 88% da variação da nota dos filmes, usando as variáveis escolhidas.
+O valor de R² indica que o modelo explica cerca de 88% da variação da nota dos filmes. Os erros (RMSE e MAE) são relativamente baixos, e a proximidade entre os resultados de treino e teste indica ausência de overfitting significativo.
 
 
 ![Grafico de dispersão](linear.png)
-
-
-
 
 
 ## Implementação dos Modelos
@@ -107,18 +98,18 @@ Os modelos escolhidos foram:
 
 ---
 
-=== "Code"
+=== "Random Forest"
 
     ```python
     --8<-- "docs/projeto2/random_forest_regressao.py"
     ``` 
-=== "Code"
+=== "KNN"
 
     ```python
     --8<-- "docs/projeto2/knn_regressao.py"
     ``` 
 
-=== "Code"
+=== "Decision tree"
 
     ```python
     --8<-- "docs/projeto2/dt.py"
@@ -129,7 +120,9 @@ Os modelos escolhidos foram:
 
 ## Avaliação dos Modelos
 
-!!!  example" Tabela de Comparação de Resultados"
+
+
+!!!  example " Tabela de Comparação de Resultados"
 
 
 | Modelo                   | R²         | RMSE      | MAE       |
@@ -185,7 +178,13 @@ O KNN, embora eficiente, mostrou resultados ligeiramente inferiores aos dois mod
 Dessa forma, o Random Forest foi escolhido como o modelo mais adequado para a previsão da nota dos filmes neste projeto.
 
 
+## Possíveis Melhorias Futuras
 
+Como melhoria futura, sugere-se a inclusão de novas variáveis, como gênero do filme, número de votos, orçamento e popularidade, para enriquecer o conjunto de dados.
+
+Também é recomendada a otimização dos hiperparâmetros dos modelos, especialmente do Random Forest e do KNN, utilizando técnicas como Grid Search.
+
+Além disso, a ampliação do período de coleta de dados pode tornar o modelo mais robusto e reduzir possíveis vieses temporais. Por fim, podem ser testados algoritmos mais avançados, como Gradient Boosting e Redes Neurais.
 
 
 
