@@ -57,11 +57,13 @@ A média das notas foi de 5,58, indicando que os filmes, em geral, possuem uma a
 
 - O histograma mostra que a maior concentração de dados está entre 4 e 6, indicando que a maioria dos filmes recebe notas nessa faixa.
 
-[histograma]: docs/projeto2/notahist.png "Histograma de Notas"
-![histograma de notas](docs/projeto2/notahist.png)
+[histograma]: ./projeto2/notahist.png "Histograma de Notas"
+![histograma de notas](./projeto2/notahist.png)
+
 
 <p align="center">
-  <img src="docs/projeto2/notashist.png" alt="Histograma" width="500">
+  <img src=<img src="./projeto2/notashist.png"
+ alt="Histograma" width="500">
 </p>
 
 ## Regressão Linear:
@@ -91,10 +93,10 @@ MAE: 0.67
 
 O modelo consegue explicar cerca de 88% da variação da nota dos filmes, usando as variáveis escolhidas.
 
-[dispersão]: docs/projeto2/linear.png "Posição vs Nota"
+[dispersão]: ./projeto2/linear.png "Posição vs Nota"
 ![Grafico de dispersão](docs/projeto2/linear.png)
 <p align="center">
-  <img src="docs/projeto2/linear.png" alt="Grafico de dispersão" width="500">
+  <img src="./projeto2/linear.png" alt="Grafico de dispersão" width="500">
 </p>
 
 
